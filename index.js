@@ -5,7 +5,6 @@ const protypa = (getText, finishReadingVar, finalText, str) => {
     var tempText = []
 
     for (var i = 0; i < str.length; i++) {
-        console.log(i);
         if(str.charAt(i) === "{" && str.charAt(i++) === "{"){
             
             readVar = true;
@@ -36,4 +35,4 @@ const protypa = (getText, finishReadingVar, finalText, str) => {
 }
 
 
-export default protypa;
+module.exports = protypa;
