@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/e4coder/protypa/issues"
   },
-  "homepage": "https://github.com/e4coder/protypa#readme"
+  "homepage": "https://github.com/e4coder/protypa#readme",
+  "devDependencies": {
+    "jest": "^26.1.0"
+  }
 }
