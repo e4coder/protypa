@@ -11,7 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/e4coder/protypa.git"
   },
-  "author": "",
+  "author": {
+    "name": "Muhammad Noman",
+    "url": "https://github.com/e4coder"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/e4coder/protypa/issues"

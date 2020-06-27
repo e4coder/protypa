@@ -1,5 +1,5 @@
 
-function protypa(getText, finishReadingVar, finalText, str) {
+const protypa = (getText, finishReadingVar, finalText, str) => {
     var readVar = false;
     var tempVar = "";
     var tempText = []
@@ -36,4 +36,4 @@ function protypa(getText, finishReadingVar, finalText, str) {
 }
 
 
-module.exports = protypa;
+export default protypa;
