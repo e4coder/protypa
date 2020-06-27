@@ -1,12 +1,13 @@
 const protypa = require("./index");
-const str1 = "this is a simple {{ var1 }} to see if it {{ var2 }}";
+const str1 = "this is a simple {{ var1 }} to see if it {{ var2  }}";
 
 var RpObj = {variables: {}}
 
-function initReport(str) {
+//{"variables":{"var1":"var1","var2":"var2"}}
+
+function installTemplate(str) {
     protypa(
     function(tempText){
-        console.log(tempText);
     },
     
     function(tempVar){
@@ -14,16 +15,14 @@ function initReport(str) {
         
     },
     function(finalText){
-        console.log(finalText);
     }, str);
 
-    console.log(RpObj.variables.var1);
-    console.log(RpObj.variables.var2);
+    return JSON.stringify(RpObj);
 }
 
 
 
-function createReport(RpObj_Processed, str) {
+function createText(RpObj_Processed, str) {
     processedStr1 = "";
     protypa(
     function(tempText){
@@ -43,5 +42,25 @@ function createReport(RpObj_Processed, str) {
 
 
 
-initReport(str1);
-console.log(createReport({variables: {var1: "test", var2: "works"}},str1));
+
+it('installTemplate', () => {
+    expect(installTemplate("this is a simple {{ var1 }} to see if it {{ var2  }}"))
+    
+    .toBe('{"variables":{"var1":"var1","var2":"var2"}}');
+});
+
+it('createText', () => {
+    expect(createText({variables: {var1: "test", var2: "works"}},"this is a simple {{ var1 }} to see if it {{ var2  }}"))
+    
+    .toBe("this is a simple test to see if it works");
+})
+
+
+
+
+
+
+
+
+//initReport(str1);
+//console.log(createReport({variables: {var1: "test", var2: "works"}},str1));

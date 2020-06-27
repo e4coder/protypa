@@ -23,7 +23,7 @@ const protypa = (getText, finishReadingVar, finalText, str) => {
 
         } else if (readVar == true) {
             
-            str.charAt(i) == " "? console.log("Empty"): tempVar += str.charAt(i);
+            if(str.charAt(i) !== " ") tempVar += str.charAt(i);
 
         } else if (readVar == false) {
             
