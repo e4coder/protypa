@@ -1,9 +1,7 @@
 const protypa = require("./index");
-const str1 = "this is a simple {{ var1 }} to see if it {{ var2  }}";
 
 var RpObj = {variables: {}}
 
-//{"variables":{"var1":"var1","var2":"var2"}}
 
 function installTemplate(str) {
     protypa(
@@ -32,7 +30,7 @@ function createText(RpObj_Processed, str) {
     },
     function(finalText){
         processedStr1 += finalText;
-    },str1);
+    },str);
 
     return processedStr1;
 }
@@ -43,15 +41,15 @@ function createText(RpObj_Processed, str) {
 
 
 it('installTemplate', () => {
-    expect(installTemplate("this is{ a} si{}mp}{le {{ var1 }} to see if it {{ var2  }}"))
+    expect(installTemplate("this is{ a{ s}}}}}imple {{ var1 }} to see if it {{ var2  }}"))
     
     .toBe('{"variables":{"var1":"var1","var2":"var2"}}');
 });
 
 it('createText', () => {
-    expect(createText({variables: {var1: "test", var2: "works"}},"this is a simple {{ var1 }} to see if it {{ var2  }}"))
+    expect(createText({variables: {var1: "test", var2: "works"}},"this is a simplee {{ var1 }} to see if it {{ var2  }}"))
 
-    .toBe("this is a simple test to see if it works");
+    .toBe("this is a simplee test to see if it works");
 })
 
 
