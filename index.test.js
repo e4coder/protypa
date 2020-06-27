@@ -12,7 +12,6 @@ function installTemplate(str) {
     
     function(tempVar){
         RpObj.variables[tempVar] = tempVar;
-        
     },
     function(finalText){
     }, str);
@@ -44,14 +43,14 @@ function createText(RpObj_Processed, str) {
 
 
 it('installTemplate', () => {
-    expect(installTemplate("this is a simple {{ var1 }} to see if it {{ var2  }}"))
+    expect(installTemplate("this is{ a} si{}mp}{le {{ var1 }} to see if it {{ var2  }}"))
     
     .toBe('{"variables":{"var1":"var1","var2":"var2"}}');
 });
 
 it('createText', () => {
     expect(createText({variables: {var1: "test", var2: "works"}},"this is a simple {{ var1 }} to see if it {{ var2  }}"))
-    
+
     .toBe("this is a simple test to see if it works");
 })
 
