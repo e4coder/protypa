@@ -1,7 +1,7 @@
 
 const core = (getText, finishReadingVar, finalText, str) => {
     var readVar = false;
-    var tempVar = "";
+    var tempVar = {value:""};
     var tempText = [];
     var openBracketToggle = false;
     var closeBracketToggle = false;
@@ -39,7 +39,7 @@ const core = (getText, finishReadingVar, finalText, str) => {
                     closeBracketToggle = false;
                     readVar = false;
                     finishReadingVar(tempVar);
-                    tempVar = "";
+                    tempVar = {value:""};
                 }
             }
 
@@ -48,7 +48,7 @@ const core = (getText, finishReadingVar, finalText, str) => {
             if(closeBracketToggle == true){
                 closeBracketToggle = false;
             }
-            if(str.charAt(i) !== " ") tempVar += str.charAt(i);
+            if(str.charAt(i) !== " ") tempVar.value += str.charAt(i);
             if(str.charAt(i) == "}") throw console.error("Unexpected '}'");
             
 
@@ -69,7 +69,7 @@ const save = (str) => {
     },
     
     (tempVar) => {
-        RpObj.variables[tempVar] = tempVar;
+        RpObj.variables[tempVar.value] = tempVar;
     },
     (finalText) => {
     }, str);
@@ -84,7 +84,7 @@ const createNew = (RpObj_Processed, str) => {
         processedStr1 += tempText;
     },
     (tempVar) => {
-        processedStr1 += RpObj_Processed.variables[tempVar];
+        processedStr1 += RpObj_Processed.variables[tempVar.value];
     },
     (finalText) => {
         processedStr1 += finalText;
