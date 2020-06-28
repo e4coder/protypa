@@ -1,5 +1,5 @@
 
-const protypa = (getText, finishReadingVar, finalText, str) => {
+const core = (getText, finishReadingVar, finalText, str) => {
     var readVar = false;
     var tempVar = "";
     var tempText = [];
@@ -61,5 +61,39 @@ const protypa = (getText, finishReadingVar, finalText, str) => {
     finalText(tempText);
 }
 
+const save = (str) => {
 
-module.exports = protypa;
+    var RpObj = {variables: {}};
+    core(
+    (tempTexet) => {
+    },
+    
+    (tempVar) => {
+        RpObj.variables[tempVar] = tempVar;
+    },
+    (finalText) => {
+    }, str);
+
+    return JSON.stringify(RpObj);
+}
+
+const createNew = (RpObj_Processed, str) => {
+    processedStr1 = "";
+    core(
+    (tempText) => {
+        processedStr1 += tempText;
+    },
+    (tempVar) => {
+        processedStr1 += RpObj_Processed.variables[tempVar];
+    },
+    (finalText) => {
+        processedStr1 += finalText;
+    },str);
+
+    return processedStr1;
+}
+
+
+module.exports.save = save;
+module.exports.createNew = createNew;
+module.exports.core = core;
