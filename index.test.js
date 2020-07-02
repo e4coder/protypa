@@ -16,7 +16,7 @@ it('Save complex Templates with vairable properties', () => {
 
 
 it('Create a new Copy from templates', () => {
-    expect(protypa.createNew({variables: {var1: "test", var2: "works"}},"this is a simplee {{ var1 }} to see if it {{ var2  }}"))
+    expect(protypa.createNew({variables: {var1: {value: "test"}, var2: {value : "works"}}},"this is a simplee {{ var1 }} to see if it {{ var2  }}"))
 
     .toBe("this is a simplee test to see if it works");
 })
