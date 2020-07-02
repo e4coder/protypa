@@ -25,7 +25,7 @@ const createNew = (RpObj_Processed, str) => {
         processedStr1 += tempText;
     },
     (tempVar) => {
-        processedStr1 += RpObj_Processed.variables[tempVar.value];
+        processedStr1 += RpObj_Processed.variables[tempVar.value].value;
     },
     (finalText) => {
         processedStr1 += finalText;
