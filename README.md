@@ -1,6 +1,6 @@
 # prótypa
 
-A simple text templating engine to be used for any type of text file.
+A simple text templating engine.
 
 ## Getting Started
 
@@ -19,8 +19,26 @@ npm install --save protypa
 
 Example work!
 
-```
-Working on it!
+```javascript
+const protypa = require('protypa');
+
+/**
+    Here we save a template of the text with variable "name"
+*/
+templateJSON = JSON.parse(protypa.save('Hello {{name}}, welcome!'));
+
+
+/**
+    We process the template to apply the new data to a new copy of the template
+*/
+processedJSON = templateJSON;
+processedJSON.variables.name.value = 'Anthony';
+
+
+/**
+    A new copy of the template with the value set instead of variable.
+*/
+result = protypa.createNew(processedJSON, 'Hello {{name}}, welcome!');
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
