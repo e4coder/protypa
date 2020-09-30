@@ -18,12 +18,7 @@ function* work (x) {
         cache2 = updateCache(holder.value, cache2);
         console.log(cache2);
         
-        if (state == "varStart")
-            state = "readingVar"
-        else if (state == "varEnd")
-            state = "read";
-            
-        state = detectKeys(cache2, state);
+        state = updateState(state, cache2);
 
         yield {char: holder.value, state: state};
     }
@@ -57,15 +52,23 @@ function detectKeys (cache, state) {
     return reworkedState
 }
 
-function updateState () {
-    
+function updateState (state, cache) {
+
+    if (state == "varStart")
+        state = "readingVar"
+    else if (state == "varEnd")
+        state = "read";
+        
+    state = detectKeys(cache, state);
+
+    return state;
 }
 
 
 
 
 
- for (const w of work("Hello,W {{ osrld!}}sdasdfdas")) {
+ for (const w of work("Hello,W {{ osrld!}}sdas{{ df }}das")) {
      if (w.state == "readingVar")
         console.log(w.char)
  }
