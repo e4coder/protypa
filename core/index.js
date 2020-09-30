@@ -1,42 +1,26 @@
-// TESTING CODE UNDER HERE
-
-let testString = "this is a test string";
-
-let stringIterator = testString[Symbol.iterator]();
-
-let example;
-
-// TESTING CODE ENDS HERE
-
-
-export class Core {
-
-    constructor() {}
-
-    /**
-     * 
-     * @param {iterator} itr - A string iterator var:string[Symbol.iterator]()
-     * 
-     */
-    iterate = (itr) => {
-
-        let holder = itr.next();
-
-        if (holder.done == false) {
-
-            console.log(holder.value);
-
-            this.iterate(itr);
-
-        }
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Core = void 0;
+var Core = /** @class */ (function () {
+    function Core() {
+        var _this = this;
+        this.charLib = [];
+        /**
+         *
+         * @param {iterator} itr - A string iterator var:string[Symbol.iterator]()
+         *
+         */
+        this.iterate = function (itr) {
+            var holder = itr.next();
+            if (holder.done == false) {
+                console.log(holder.value);
+                _this.iterate(itr);
+            }
+        };
+        this.process = function (char) {
+        };
     }
-}
-
-module.exports.default = Core;
-
-// TESTING CODE UNDER HERE
-
-example = new revisedCore();
-
-
-// TESTING CODE ENDS
+    return Core;
+}());
+exports.Core = Core;
+//# sourceMappingURL=index.js.map
