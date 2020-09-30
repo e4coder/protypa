@@ -34,6 +34,15 @@ const createNew = (RpObj_Processed, str) => {
     return processedStr1;
 }
 
+/**
+ * 
+ * @param {string} str - string for processing
+ * @param {object} rp - input data
+ */
+const write = (str, rp) => {
+
+}
+
 
 module.exports.save = save;
 module.exports.createNew = createNew;
