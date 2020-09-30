@@ -20,3 +20,13 @@ it('Create a new Copy from templates', () => {
 
     .toBe("this is a simplee test to see if it works");
 })
+
+it('write function revised core test', () => {
+    expect(protypa.write('Hello, {{name1}} you are a {{gender}}', {name1:"Noman", gender: "Male"}))
+    .toBe("Hello, Noman you are a Male")
+})
+
+it('generate', () => {
+    expect(protypa.generateVariableObject('Hello, {{name1}} you are a {{gender}}'))
+    .toBe('{"name1":"","gender":""}');
+})

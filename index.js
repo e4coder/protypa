@@ -1,5 +1,5 @@
 
-const core = require('./core');
+const core = require('./core.js');
 
 const save = (str) => {
 
@@ -34,6 +34,29 @@ const createNew = (RpObj_Processed, str) => {
     return processedStr1;
 }
 
+const generateVariableObject = (str) => {
+    result = "";
+    varCache = "";
+
+    for (const ch of core.work(str)) {
+
+        
+
+        if (ch.state == "readingVar")
+            varCache += ch.char;
+
+            
+        else if (ch.state == "varEnd"){
+            varCache = varCache.replace(" ", "");
+            varCache = varCache.slice(0, -1);
+            result[varCache] = "";
+        }
+        
+    }
+    
+    return JSON.stringify(result);
+}
+
 /**
  * 
  * @param {string} str - string for processing
@@ -41,8 +64,36 @@ const createNew = (RpObj_Processed, str) => {
  */
 const write = (str, rp) => {
 
+    result = "";
+    varCache = "";
+
+    for (const ch of core.work(str)) {
+
+        if(ch.state == "read")
+            result += ch.char;
+
+        else if (ch.state == "varStart") {
+            varCache = ""
+            result = result.slice(0, -1)
+        }
+
+        else if (ch.state == "readingVar")
+            varCache += ch.char;
+
+            
+        else if (ch.state == "varEnd"){
+            varCache = varCache.replace(" ", "");
+            varCache = varCache.slice(0, -1);
+            result += rp[varCache];
+        }
+        
+    }
+    
+    return result;
 }
 
 
 module.exports.save = save;
 module.exports.createNew = createNew;
+module.exports.write = write;
+module.exports.generateVariableObject = generateVariableObject;

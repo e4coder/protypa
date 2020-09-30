@@ -60,4 +60,73 @@ const core = (getText, finishReadingVar, finalText, str) => {
     finalText(tempText);
 }
 
+
+
+
+
+let cache2 = "";
+
+function* work (x) {
+    let state = "read";
+    let str = x;
+    let itr_s = str[Symbol.iterator]();
+
+    while(true) {
+        holder = itr_s.next();
+        
+        if(holder.done == true) 
+            return
+
+        cache2 = updateCache(holder.value, cache2);
+        //console.log(cache2);
+        
+        state = updateState(state, cache2);
+
+        yield {char: holder.value, state: state};
+    }
+}
+
+
+
+function updateCache(char, cache) {
+
+    let reworkedCache = cache;
+
+    if (cache.length >= 2) {
+        reworkedCache = cache.substring(1)
+        reworkedCache += char;
+    } else reworkedCache += char;
+
+
+
+    return reworkedCache;
+}
+
+function detectKeys (cache, state) {
+
+    let reworkedState = state;
+
+    if (cache == "{{")
+        reworkedState = "varStart";
+
+    if (cache == "}}")
+        reworkedState = "varEnd";
+
+    return reworkedState
+}
+
+function updateState (state, cache) {
+
+    if (state == "varStart")
+        state = "readingVar";
+
+    else if (state == "varEnd")
+        state = "read";
+        
+    state = detectKeys(cache, state);
+
+    return state;
+}
+
 module.exports = core;
+module.exports.work = work;
