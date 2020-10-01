@@ -1,39 +1,102 @@
 
 const core = require('./core');
 
-const save = (str) => {
+let coreObj = new core.CoreClass();
 
-    var RpObj = {variables: {}};
-    core(
-    (tempText) => {
-        //loops through text before and after variables and returns as tempText
-    },
+
+
+
+/**
+ * 
+ * @param {string} str - string for processing
+ */
+
+let generateVariableObject = (str) => {
     
-    (tempVar) => {
-        RpObj.variables[tempVar.value] = tempVar;
-    },
-    (finalText) => {
-    }, str);
 
-    return JSON.stringify(RpObj);
+    
+    //The result will hold the variables in its vars property 
+    let result = { vars: {} };
+
+
+
+    //We need the varCache to increment a character while 'ch.state' is "readingVar".
+    let varCache = "";
+
+
+    /**
+     * the iterate() generator returns an iterator with char and its state. we need these states
+     * in order to generate a json object. this json object holds variables that we made from
+     * the string.
+     * 
+     * If the user wants to save the JSON file, the user then can change 
+     */
+    for (const ch of coreObj.iterate(str)) {
+
+
+        if (ch.state == "varStart") {
+            varCache = ""
+        }
+
+        if (ch.state == "readingVar")
+            varCache += ch.char;
+
+            
+        if (ch.state == "varEnd"){
+            varCache = varCache.replace(" ", "");
+            varCache = varCache.slice(0, -1);
+            result.vars[varCache] = "";
+        }
+        
+    }
+    
+    return JSON.stringify(result.vars);
 }
 
-const createNew = (RpObj_Processed, str) => {
-    processedStr1 = "";
-    core(
-    (tempText) => {
-        processedStr1 += tempText;
-    },
-    (tempVar) => {
-        processedStr1 += RpObj_Processed.variables[tempVar.value].value;
-    },
-    (finalText) => {
-        processedStr1 += finalText;
-    },str);
 
-    return processedStr1;
+
+
+
+
+
+
+
+
+/**
+ * 
+ * @param {string} str - string for processing
+ * @param {object} rp - input data
+ */
+
+ let write = (str, rp) => {
+
+    result = "";
+    varCache = "";
+
+    for (const ch of coreObj.iterate(str)) {
+
+        if(ch.state == "read")
+            result += ch.char;
+
+        else if (ch.state == "varStart") {
+            varCache = ""
+            result = result.slice(0, -1)
+        }
+
+        else if (ch.state == "readingVar")
+            varCache += ch.char;
+
+            
+        else if (ch.state == "varEnd"){
+            varCache = varCache.replace(" ", "");
+            varCache = varCache.slice(0, -1);
+            result += rp[varCache];
+        }
+        
+    }
+    
+    return result;
 }
 
-
-module.exports.save = save;
-module.exports.createNew = createNew;
+module.exports.write = write;
+module.exports.generateVariableObject = generateVariableObject;

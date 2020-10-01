@@ -1,46 +1,27 @@
 # prótypa
 
-A simple text templating engine.
+A simple text templating engine. It reads strings and looks for expressions embedded in curly braces and replaces the expression with a value stored in a variable. the project is in R&D phase, and the final product may be entirely different
+feel free to suggest new features
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Installing the package
-
-```
-npm install --save protypa
-```
-
-Example work!
+### Example
 
 ```javascript
 const protypa = require('protypa');
 
-/**
-    Here we save a template of the text with variable "name"
-*/
-templateJSON = JSON.parse(protypa.save('Hello {{name}}, welcome!'));
 
+let result = protypa.write("Hello, {{name}}!", {name: "Jack"});
 
-/**
-    We process the template to apply the new data to a new copy of the template
-*/
-processedJSON = templateJSON;
-processedJSON.variables.name.value = 'Anthony';
-
-
-/**
-    A new copy of the template with the value set instead of variable.
-*/
-result = protypa.createNew(processedJSON, 'Hello {{name}}, welcome!');
+console.log(result);
 ```
-
+output
+```
+Hello, Jack!
+```
 End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
@@ -51,14 +32,10 @@ To run automated test run the following command.
 npm run watch
 ```
 
+## Contribution Guide
+
+* **Working on it!**
+
 ## Authors
 
 * **Muhammad Noman** - [e4coder](https://github.com/e4coder)
-
-See also the list of [contributors](https://github.com/e4coder/protypa/contributors) who participated in this project.
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
