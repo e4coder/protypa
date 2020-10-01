@@ -1,44 +1,38 @@
 
-const core = require('./core.js');
+const core = require('./core');
 
-const save = (str) => {
+let coreObj = new core.CoreClass();
 
-    var RpObj = {variables: {}};
-    core(
-    (tempText) => {
-        //loops through text before and after variables and returns as tempText
-    },
+
+
+
+/**
+ * 
+ * @param {string} str - string for processing
+ */
+
+let generateVariableObject = (str) => {
     
-    (tempVar) => {
-        RpObj.variables[tempVar.value] = tempVar;
-    },
-    (finalText) => {
-    }, str);
 
-    return JSON.stringify(RpObj);
-}
+    
+    //The result will hold the variables in its vars property 
+    let result = { vars: {} };
 
-const createNew = (RpObj_Processed, str) => {
-    processedStr1 = "";
-    core(
-    (tempText) => {
-        processedStr1 += tempText;
-    },
-    (tempVar) => {
-        processedStr1 += RpObj_Processed.variables[tempVar.value].value;
-    },
-    (finalText) => {
-        processedStr1 += finalText;
-    },str);
 
-    return processedStr1;
-}
 
-const generateVariableObject = (str) => {
-    let result = { vars: {}};
+    //We need the varCache to increment a character while 'ch.state' is "readingVar".
     let varCache = "";
 
-    for (const ch of core.work(str)) {
+
+    /**
+     * the iterate() generator returns an iterator with char and its state. we need these states
+     * in order to generate a json object. this json object holds variables that we made from
+     * the string.
+     * 
+     * If the user wants to save the JSON file, the user then can change 
+     */
+    for (const ch of coreObj.iterate(str)) {
+
 
         if (ch.state == "varStart") {
             varCache = ""
@@ -59,17 +53,27 @@ const generateVariableObject = (str) => {
     return JSON.stringify(result.vars);
 }
 
+
+
+
+
+
+
+
+
+
 /**
  * 
  * @param {string} str - string for processing
  * @param {object} rp - input data
  */
-const write = (str, rp) => {
+
+ let write = (str, rp) => {
 
     result = "";
     varCache = "";
 
-    for (const ch of core.work(str)) {
+    for (const ch of coreObj.iterate(str)) {
 
         if(ch.state == "read")
             result += ch.char;
@@ -94,8 +98,5 @@ const write = (str, rp) => {
     return result;
 }
 
-
-module.exports.save = save;
-module.exports.createNew = createNew;
 module.exports.write = write;
 module.exports.generateVariableObject = generateVariableObject;
