@@ -77,33 +77,14 @@ export let app = {
 
                 varCache = varCache.replace(" ", ""); 
 
-                varCache = varCache.slice(0, -1); 
+                varCache = varCache.slice(0, -1);
 
-                result += vars[varCache]; 
+                result += vars[varCache];
 
             }
 
         }
 
         return result;
-    }
-}
-
-
-const iteration = (str, onStateRead, onStateVarStart, onStateReadingVar, onStateVarEnd) => {
-    for (const ch of app.core.iterate(str)) {
-
-        if (ch.state == "read")
-            onStateRead();
-
-        else if (ch.state == "varStart")
-            onStateVarStart();
-
-        else if (ch.state == "readingVar")
-            onStateReadingVar();
-
-        else if (ch.state == "varEnd")
-            onStateVarEnd();
-
     }
 }
