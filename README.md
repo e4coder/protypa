@@ -7,30 +7,27 @@ feel free to suggest new features
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+>npm i --save protypa
 
 ### Example
 
 ```javascript
 const protypa = require('protypa');
 
-
 let result = protypa.write("Hello, {{name}}!", {name: "Jack"});
 
 console.log(result);
 ```
 output
-```
-Hello, Jack!
-```
-End with an example of getting some data out of the system or using it for a little demo
+> Hello, Jack!
+
 
 ## Running the tests
 
 To run automated test run the following command.
 
-```
-npm run watch
-```
+> npm run watch
+
 
 ## Contribution Guide
 
