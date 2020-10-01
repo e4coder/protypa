@@ -1,24 +1,43 @@
 const protypa = require("./index");
 
-
+/**
+ * 
+ */
 it('write function revised core test', () => {
-    expect(
 
-        protypa.write(
+        expect(
 
-            'Hello, {{name1}} you }}are a {{gender}}', 
+            protypa.write(
 
-            {name1:"Noman", gender: "Male"}
-            
+                'Hello, {{name1}} you }}are a {{gender}}', 
+
+                {name1:"Noman", gender: "Male"}
+                
+            )
+
         )
 
-    )
+
+        .toBe("Hello, Noman you }}are a Male")
+    }
+
+)
 
 
-    .toBe("Hello, Noman you }}are a Male")
-})
 
+/**
+ * 
+ */
 it('generateJson', () => {
-    expect(protypa.generateVariableObject('Hello, {{name1}} you are a {{gender}}'))
-    .toBe('{"name1":"","gender":""}')
-})
+
+        expect(
+
+            protypa.generateVariableObject('Hello, {{name1}} you are a {{gender}}')
+
+        )
+
+        .toBe('{"name1":"","gender":""}')
+
+    }
+
+)
