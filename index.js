@@ -35,26 +35,28 @@ const createNew = (RpObj_Processed, str) => {
 }
 
 const generateVariableObject = (str) => {
-    result = "";
-    varCache = "";
+    let result = { vars: {}};
+    let varCache = "";
 
     for (const ch of core.work(str)) {
 
-        
+        if (ch.state == "varStart") {
+            varCache = ""
+        }
 
         if (ch.state == "readingVar")
             varCache += ch.char;
 
             
-        else if (ch.state == "varEnd"){
+        if (ch.state == "varEnd"){
             varCache = varCache.replace(" ", "");
             varCache = varCache.slice(0, -1);
-            result[varCache] = "";
+            result.vars[varCache] = "";
         }
         
     }
     
-    return JSON.stringify(result);
+    return JSON.stringify(result.vars);
 }
 
 /**

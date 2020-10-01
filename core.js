@@ -128,5 +128,33 @@ function updateState (state, cache) {
     return state;
 }
 
+const generateVariableObject = (str) => {
+    result;
+    varCache = "";
+
+    for (const ch of work(str)) {
+
+        if (ch.state == "varStart") {
+            varCache = ""
+        }
+
+        if (ch.state == "readingVar")
+            varCache += ch.char;
+
+            
+        if (ch.state == "varEnd"){
+            varCache = varCache.replace(" ", "");
+            varCache = varCache.slice(0, -1);
+            result[varCache] = "";
+        }
+        
+    }
+    
+    return JSON.stringify(result);
+}
+
+generateVariableObject("Hello, {{name1}} you are a {{gender}}")
+
+
 module.exports = core;
 module.exports.work = work;
