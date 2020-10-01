@@ -1,0 +1,2 @@
+import { CoreClass } from './core';
+
