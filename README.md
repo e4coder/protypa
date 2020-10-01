@@ -9,17 +9,49 @@ These instructions will get you a copy of the project up and running on your loc
 
 >npm i --save protypa
 
-### Example
+### Example - write()
 
 ```javascript
 const protypa = require('protypa');
 
-let result = protypa.write("Hello, {{name}}!", {name: "Jack"});
+let str = "Hello, {{name}}!"
+
+let result = protypa.write(str, {name: "Jack"});
 
 console.log(result);
 ```
 output
 > Hello, Jack!
+
+
+### Example - extract()
+
+**Extracting single variable**
+```javascript
+const protypa = require('protypa');
+
+let str = "Hello, {{name}}!";
+
+let result = protypa.extract(str);
+
+console.log(JSON.stringify(result));
+```
+output
+> {"name":""}
+
+**Extracting multiple variables**
+
+```javascript
+const protypa = require('protypa');
+
+let str = "Hello, {{name}}!. you are a {{gender}}";
+
+let result = protypa.extract(str);
+
+console.log(JSON.stringify(result));
+```
+output
+> {"name":"", "gender":""}
 
 
 ## Running the tests

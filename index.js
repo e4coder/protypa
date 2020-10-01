@@ -11,7 +11,7 @@ let coreObj = new core.CoreClass();
  * @param {string} str - string for processing
  */
 
-let generateVariableObject = (str) => {
+let extract = (str) => {
     
 
     
@@ -50,7 +50,7 @@ let generateVariableObject = (str) => {
         
     }
     
-    return JSON.stringify(result.vars);
+    return result.vars;
 }
 
 
@@ -99,4 +99,4 @@ let generateVariableObject = (str) => {
 }
 
 module.exports.write = write;
-module.exports.generateVariableObject = generateVariableObject;
+module.exports.extract = extract;

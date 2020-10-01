@@ -32,7 +32,7 @@ it('generateJson', () => {
 
         expect(
 
-            protypa.generateVariableObject('Hello, {{name1}} you are a {{gender}}')
+            JSON.stringify(protypa.extract('Hello, {{name1}} you are a {{gender}}'))
 
         )
 
