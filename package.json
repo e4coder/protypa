@@ -1,10 +1,6 @@
 {
   "name": "protypa",
-<<<<<<< HEAD
-  "version": "1.0.7",
-=======
   "version": "1.1.0",
->>>>>>> 85a1eb0a4933cafc6b7d2080fef4f23b327a9dd5
   "description": "Text templating engine",
   "main": "index.js",
   "scripts": {
