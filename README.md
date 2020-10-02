@@ -28,31 +28,30 @@ output
 * Extracting single variable.
 
 ```javascript
-const protypa = require('protypa');
+const { app } = require('protypa');
 
 let str = "Hello, {{name}}!";
 
-let result = protypa.extract(str);
+let result = app.extract(str);
 
 console.log(JSON.stringify(result));
 ```
-output
-> {"name":""}
+***output*** : `{"name":""}`
 
 
 
 * Extracting multiple variables.
 ```javascript
-const protypa = require('protypa');
+const { app } = require('protypa');
 
 let str = "Hello, {{name}}!. you are a {{gender}}";
 
-let result = protypa.extract(str);
+let result = app.extract(str);
 
 console.log(JSON.stringify(result));
 ```
-output
-> {"name":"", "gender":""}
+***output*** : `{"name":"", "gender":""}`
+
 
 
 
