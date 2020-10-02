@@ -3,20 +3,19 @@
 A simple text templating engine. It reads strings and looks for expressions embedded in curly braces and replaces the expression with a value stored in a variable. the project is in R&D phase, and the final product may be entirely different
 feel free to suggest new features
 
-## Getting Started
+# Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
+**Instalation**
 >npm i --save protypa
 
-### Example - write()
+## Example - write()
 
 ```javascript
-const protypa = require('protypa');
+const { app } = require('protypa');
 
 let str = "Hello, {{name}}!"
 
-let result = protypa.write(str, {name: "Jack"});
+let result = app.write(str, {name: "Jack"});
 
 console.log(result);
 ```
@@ -24,44 +23,41 @@ output
 > Hello, Jack!
 
 
-### Example - extract()
+## Example - extract() 
 
-**Extracting single variable**
+* **Extracting single variable.**
+
 ```javascript
-const protypa = require('protypa');
+const { app } = require('protypa');
 
 let str = "Hello, {{name}}!";
 
-let result = protypa.extract(str);
+let result = app.extract(str);
 
 console.log(JSON.stringify(result));
 ```
-output
-> {"name":""}
+***output*** : `{"name":""}`
 
-**Extracting multiple variables**
+
+
+* **Extracting multiple variables.**
 
 ```javascript
-const protypa = require('protypa');
+const { app } = require('protypa');
 
 let str = "Hello, {{name}}!. you are a {{gender}}";
 
-let result = protypa.extract(str);
+let result = app.extract(str);
 
 console.log(JSON.stringify(result));
 ```
-output
-> {"name":"", "gender":""}
+***output*** : `{"name":"", "gender":""}`
 
 
-## Running the tests
-
-To run automated test run the following command.
-
-> npm run watch
 
 
-## Contribution Guide
+
+# Contribution Guide
 
 * **Working on it!**
 
