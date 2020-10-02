@@ -1,4 +1,4 @@
-const { app } = require("./index");
+const protypa = require("./index");
 
 
 /**
@@ -8,7 +8,7 @@ it('write()#normal', () => {
 
         expect(
 
-            app.write(
+            protypa.write(
 
                 'Hello, {{name1}} you }}are a {{gender}}', 
 
@@ -29,11 +29,11 @@ it('write()#normal', () => {
 /**
  * 
  */
-it('expect()#normal', () => {
+it('extract()#normal', () => {
 
         expect(
 
-            JSON.stringify(app.extract('Hello, {{name1}} you are a {{gender}}'))
+            JSON.stringify(protypa.extract('Hello, {{name1}} you are a {{gender}}'))
 
         )
 

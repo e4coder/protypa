@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.app = void 0;
+exports.extract = exports.write = exports.app = void 0;
 const core_1 = require("./core");
 exports.app = {
     core: new core_1.CoreClass(),
@@ -50,5 +50,14 @@ exports.app = {
         }
         return result;
     }
+};
+// Depricated Functions - they will be removed in future updates
+exports.write = (str, vars) => {
+    console.log("protypa.write() is a depricated function  and will be replaced with protypa.app.write();");
+    return exports.app.write(str, vars);
+};
+exports.extract = (str) => {
+    console.log("protypa.extract() is a depricated function  and will be replaced with protypa.app.extract();");
+    return exports.app.extract(str);
 };
 //# sourceMappingURL=index.js.map
