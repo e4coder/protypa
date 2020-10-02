@@ -19,7 +19,6 @@ class CoreClass {
             if (holder.done == true)
                 return;
             this.cache2 = this.updateCache(holder.value, this.cache2);
-            //console.log(cache2);
             state = this.updateState(state, this.cache2);
             yield { char: holder.value, state: state };
         }

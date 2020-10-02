@@ -1,9 +1,10 @@
 const protypa = require("./index");
 
+
 /**
  * 
  */
-it('write function revised core test', () => {
+it('write()#normal', () => {
 
         expect(
 
@@ -28,7 +29,7 @@ it('write function revised core test', () => {
 /**
  * 
  */
-it('generateJson', () => {
+it('extract()#normal', () => {
 
         expect(
 
