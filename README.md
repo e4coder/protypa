@@ -5,18 +5,17 @@ feel free to suggest new features
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
+**Instalation**
 >npm i --save protypa
 
 ### Example - write()
 
 ```javascript
-const protypa = require('protypa');
+const { app } = require('protypa');
 
 let str = "Hello, {{name}}!"
 
-let result = protypa.write(str, {name: "Jack"});
+let result = app.write(str, {name: "Jack"});
 
 console.log(result);
 ```
@@ -24,9 +23,10 @@ output
 > Hello, Jack!
 
 
-### Example - extract()
+### Example - extract() 
 
-**Extracting single variable**
+* Extracting single variable.
+
 ```javascript
 const protypa = require('protypa');
 
@@ -39,8 +39,9 @@ console.log(JSON.stringify(result));
 output
 > {"name":""}
 
-**Extracting multiple variables**
 
+
+* Extracting multiple variables.
 ```javascript
 const protypa = require('protypa');
 
@@ -54,14 +55,9 @@ output
 > {"name":"", "gender":""}
 
 
-## Running the tests
-
-To run automated test run the following command.
-
-> npm run watch
 
 
-## Contribution Guide
+# Contribution Guide
 
 * **Working on it!**
 
