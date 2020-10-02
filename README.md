@@ -3,12 +3,12 @@
 A simple text templating engine. It reads strings and looks for expressions embedded in curly braces and replaces the expression with a value stored in a variable. the project is in R&D phase, and the final product may be entirely different
 feel free to suggest new features
 
-## Getting Started
+# Getting Started
 
 **Instalation**
 >npm i --save protypa
 
-### Example - write()
+## Example - write()
 
 ```javascript
 const { app } = require('protypa');
@@ -23,9 +23,9 @@ output
 > Hello, Jack!
 
 
-### Example - extract() 
+## Example - extract() 
 
-* Extracting single variable.
+* **Extracting single variable.**
 
 ```javascript
 const { app } = require('protypa');
@@ -40,7 +40,8 @@ console.log(JSON.stringify(result));
 
 
 
-* Extracting multiple variables.
+* **Extracting multiple variables.**
+
 ```javascript
 const { app } = require('protypa');
 
