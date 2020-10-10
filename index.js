@@ -23,7 +23,10 @@ exports.app = {
             if (ch.state == "readingVar")
                 varCache += ch.char;
             if (ch.state == "varEnd") {
-                varCache = varCache.replace(" ", "");
+                for (const ch of varCache) {
+                    if (ch == " ")
+                        varCache = varCache.replace(" ", "");
+                }
                 varCache = varCache.slice(0, -1);
                 result.vars[varCache] = "";
             }
@@ -43,7 +46,10 @@ exports.app = {
             else if (ch.state == "readingVar")
                 varCache += ch.char;
             else if (ch.state == "varEnd") {
-                varCache = varCache.replace(" ", "");
+                for (const ch of varCache) {
+                    if (ch == " ")
+                        varCache = varCache.replace(" ", "");
+                }
                 varCache = varCache.slice(0, -1);
                 result += vars[varCache];
             }

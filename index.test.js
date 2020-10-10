@@ -10,7 +10,7 @@ it('write()#normal', () => {
 
             protypa.write(
 
-                'Hello, {{name1}} you }}are a {{gender}}', 
+                'Hello, {{ name1 }} you }}are a {{ gender }}', 
 
                 {name1:"Noman", gender: "Male"}
                 
@@ -33,7 +33,7 @@ it('extract()#normal', () => {
 
         expect(
 
-            JSON.stringify(protypa.extract('Hello, {{name1}} you are a {{gender}}'))
+            JSON.stringify(protypa.extract('Hello, {{ name1 }} you are a {{ gender }}'))
 
         )
 
