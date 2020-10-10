@@ -34,7 +34,10 @@ export let app = {
 
             if (ch.state == "varEnd") {
 
-                varCache = varCache.replace(" ", "");
+                for (const ch of varCache) {
+                    if(ch == " ")
+                        varCache = varCache.replace(" ", "");
+                }
 
                 varCache = varCache.slice(0, -1);
 
@@ -75,7 +78,10 @@ export let app = {
 
             else if (ch.state == "varEnd") {
 
-                varCache = varCache.replace(" ", ""); 
+                for (const ch of varCache) {
+                    if(ch == " ")
+                        varCache = varCache.replace(" ", "");
+                }
 
                 varCache = varCache.slice(0, -1);
 
