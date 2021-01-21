@@ -42,3 +42,29 @@ it('extract()#normal', () => {
     }
 
 )
+
+
+
+it('write()#Error:001', () => {
+    try {
+        protypa.write('Hello {{ Wo rld }}', { world: "World"})
+    } catch (e) {
+        expect(
+            e.message
+        ).toBe("variable name can not have whitespaces")
+    }
+
+})
+
+
+
+it('extract()#Error:001', () => {
+    try {
+        protypa.write('Hello {{ Wo rld }}')
+    } catch (e) {
+        expect(
+            e.message
+        ).toBe("variable name can not have whitespaces")
+    }
+
+})

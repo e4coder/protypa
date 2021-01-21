@@ -23,11 +23,12 @@ exports.app = {
             if (ch.state == "readingVar")
                 varCache += ch.char;
             if (ch.state == "varEnd") {
+                varCache = varCache.slice(0, -1);
+                varCache = varCache.trim();
                 for (const ch of varCache) {
                     if (ch == " ")
-                        varCache = varCache.replace(" ", "");
+                        throw new Error("variable name can not have whitespaces");
                 }
-                varCache = varCache.slice(0, -1);
                 result.vars[varCache] = "";
             }
         }
@@ -46,11 +47,13 @@ exports.app = {
             else if (ch.state == "readingVar")
                 varCache += ch.char;
             else if (ch.state == "varEnd") {
-                for (const ch of varCache) {
-                    if (ch == " ")
-                        varCache = varCache.replace(" ", "");
-                }
                 varCache = varCache.slice(0, -1);
+                varCache = varCache.trim();
+                for (const ch of varCache) {
+                    ch;
+                    if (ch == " ")
+                        throw new Error("variable name can not have whitespaces");
+                }
                 result += vars[varCache];
             }
         }
@@ -58,12 +61,14 @@ exports.app = {
     }
 };
 // Depricated Functions - they will be removed in future updates
-exports.write = (str, vars) => {
+const write = (str, vars) => {
     console.log("protypa.write() is a depricated function  and will be replaced with protypa.app.write();");
     return exports.app.write(str, vars);
 };
-exports.extract = (str) => {
+exports.write = write;
+const extract = (str) => {
     console.log("protypa.extract() is a depricated function  and will be replaced with protypa.app.extract();");
     return exports.app.extract(str);
 };
+exports.extract = extract;
 //# sourceMappingURL=index.js.map

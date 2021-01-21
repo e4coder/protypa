@@ -34,12 +34,15 @@ export let app = {
 
             if (ch.state == "varEnd") {
 
+                varCache = varCache.slice(0, -1);
+                varCache = varCache.trim();
                 for (const ch of varCache) {
                     if(ch == " ")
-                        varCache = varCache.replace(" ", "");
+                        throw new Error("variable name can not have whitespaces");
+                        
                 }
 
-                varCache = varCache.slice(0, -1);
+                
 
                 result.vars[varCache] = "";
 
@@ -78,12 +81,17 @@ export let app = {
 
             else if (ch.state == "varEnd") {
 
+                
+                varCache = varCache.slice(0, -1);
+                varCache = varCache.trim();
                 for (const ch of varCache) {
+                    ch
                     if(ch == " ")
-                        varCache = varCache.replace(" ", "");
+                        throw new Error("variable name can not have whitespaces");
+                        
                 }
 
-                varCache = varCache.slice(0, -1);
+                
 
                 result += vars[varCache];
 
