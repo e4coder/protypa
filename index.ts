@@ -106,11 +106,9 @@ export let app = {
 
 // Depricated Functions - they will be removed in future updates
 export const write = (str, vars) => {
-    console.log("protypa.write() is a depricated function  and will be replaced with protypa.app.write();");
     return app.write(str, vars);
 };
 
 export const extract = (str) => {
-    console.log("protypa.extract() is a depricated function  and will be replaced with protypa.app.extract();");
     return app.extract(str);
 };
