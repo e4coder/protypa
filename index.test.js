@@ -68,3 +68,19 @@ it('extract()#Error:001', () => {
     }
 
 })
+
+it('extract()#Meta', () => {
+   expect(
+
+        JSON.stringify(protypa.extract('noman is a good boy {{ nom|dom }} {{ asd }}'))
+
+   ).toBe('{"nom":{"value":"","meta":"dom"},"asd":""}');
+})
+
+it('write()#Meta', () => {
+    expect(
+
+        protypa.write('noman is a good boy {{ nom|dom }} {{asd}}', {nom: "working", asd: "double Working"})
+
+    ).toBe("noman is a good boy working double Working");
+})

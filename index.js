@@ -29,7 +29,15 @@ exports.app = {
                     if (ch == " ")
                         throw new Error("variable name can not have whitespaces");
                 }
-                result.vars[varCache] = "";
+                let expression = varCache.split('|');
+                if (expression.length > 1) {
+                    let name = expression[0];
+                    let meta = expression[1];
+                    result.vars[name] = { value: "", meta: meta };
+                }
+                else {
+                    result.vars[varCache] = "";
+                }
             }
         }
         return result.vars;
@@ -54,7 +62,13 @@ exports.app = {
                     if (ch == " ")
                         throw new Error("variable name can not have whitespaces");
                 }
-                result += vars[varCache];
+                let expression = varCache.split('|');
+                if (expression.length > 1) {
+                    result += vars[expression[0]];
+                }
+                else {
+                    result += vars[varCache];
+                }
             }
         }
         return result;

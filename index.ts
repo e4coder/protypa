@@ -42,9 +42,20 @@ export let app = {
                         
                 }
 
-                
+                let expression = varCache.split('|');
+                if (expression.length > 1) {
+                    
+                    let name = expression[0];
+                    let meta = expression[1];
+                    
+                    result.vars[name] = {value: "", meta: meta};
 
-                result.vars[varCache] = "";
+                } else {
+
+                    result.vars[varCache] = "";
+
+                }
+                
 
             }
 
@@ -91,9 +102,13 @@ export let app = {
                         
                 }
 
-                
+                let expression = varCache.split('|');
+                if (expression.length > 1) {
+                    result += vars[expression[0]];
+                } else {
+                    result += vars[varCache];
+                }
 
-                result += vars[varCache];
 
             }
 
